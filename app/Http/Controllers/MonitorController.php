@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Monitor;
+use App\Client;
 class MonitorController extends Controller
 {
     /**
@@ -124,7 +125,7 @@ class MonitorController extends Controller
             $client = Client::find($idClient);
             if ($monitor){
                 if($client){
-                    $monitor->id_client = $client->id;
+                    $monitor->client_id = $client->id;
                     if($monitor->save()){
                         return response()->json(["Status" => "Ok", "Data" => $monitor], 200);
                     }else{

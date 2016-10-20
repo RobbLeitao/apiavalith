@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Computer;
 
+use App\Client;
+
 class ComputerController extends Controller
 {
     /**
@@ -126,7 +128,7 @@ class ComputerController extends Controller
             $client = Client::find($idClient);
             if ($computer){
                 if($client){
-                    $computer->id_client = $client->id;
+                    $computer->client_id = $client->id;
                     if($computer->save()){
                         return response()->json(["Status" => "Ok", "Data" => $computer], 200);
                     }else{
